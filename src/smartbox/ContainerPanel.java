@@ -34,7 +34,7 @@ public class ContainerPanel extends AppPanel {
                     cmd = factory.makeEditCommand(model, "Add", input);
                     try {
                         components.add(input); // add to list of components
-                        ((Container) model).addComponent(input); // add to container
+                        //((Container) model).addComponent(input); // add to container
                     } catch (Exception ex) {
                         throw new RuntimeException(ex);
                     }

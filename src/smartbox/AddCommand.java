@@ -5,6 +5,7 @@ public class AddCommand extends Command {
     private String componentName;
     public AddCommand(Model model, String componentName) {
         super(model);
+        this.componentName = componentName;
         this.model = model;
     }
 
