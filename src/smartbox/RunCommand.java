@@ -6,6 +6,7 @@ public class RunCommand extends Command {
     private String componentName;
     public RunCommand(Model model, String componentName) {
         super(model);
+        this.componentName = componentName;
         this.model = model;
     }
 

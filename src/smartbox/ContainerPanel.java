@@ -38,7 +38,6 @@ public class ContainerPanel extends AppPanel {
                     } catch (Exception ex) {
                         throw new RuntimeException(ex);
                     }
-                    System.out.println("Add");
                     break;
                 case "Rem":
                     cmd = factory.makeEditCommand(model, "Rem", input);

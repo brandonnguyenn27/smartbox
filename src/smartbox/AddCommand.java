@@ -12,7 +12,7 @@ public class AddCommand extends Command {
     public void execute() {
         if (model instanceof Container) {
             try {
-                ((Container) model).addComponent(componentName); //component has name field, use it
+                ((Container) model).addComponent(componentName);
             } catch (Exception e) {
                 e.printStackTrace();
             }
