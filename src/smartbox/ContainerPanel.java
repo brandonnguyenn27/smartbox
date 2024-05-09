@@ -27,14 +27,14 @@ public class ContainerPanel extends AppPanel {
     public void actionPerformed(ActionEvent e) {
         String input = JOptionPane.showInputDialog("Enter component name:");
         String actionCommand = e.getActionCommand();
-        Command cmd = null;
+        Command cmd;
         if (input != null) {
             switch (actionCommand) {
                 case "Add":
                     cmd = factory.makeEditCommand(model, "Add", input);
                     try {
                         components.add(input); // add to list of components
-                        //((Container) model).addComponent(input); // add to container
+                        cmd.execute();
                     } catch (Exception ex) {
                         throw new RuntimeException(ex);
                     }
@@ -44,7 +44,8 @@ public class ContainerPanel extends AppPanel {
                     cmd = factory.makeEditCommand(model, "Rem", input);
                     try {
                         components.remove(input); // remove from list of components
-                        ((Container) model).remComponent(input); // remove from container
+                        cmd.execute();
+
                     } catch (Exception ex) {
                         throw new RuntimeException(ex);
                     }
@@ -52,7 +53,8 @@ public class ContainerPanel extends AppPanel {
                 case "Run":
                     cmd = factory.makeEditCommand(model, "Run", input);
                     try {
-                        ((Container) model).launch(input);
+                        cmd.execute();
+
                     } catch (Exception ex) {
                         throw new RuntimeException(ex);
                     }
@@ -60,7 +62,6 @@ public class ContainerPanel extends AppPanel {
                 default:
                     super.actionPerformed(e);
             }
-            cmd.execute();
         }
     }
 

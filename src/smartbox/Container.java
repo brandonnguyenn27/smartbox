@@ -17,6 +17,10 @@ public class Container extends Model {
         return components.values();
     }
 
+    public Collection<String> getComponentNames() {
+        return components.keySet();
+    }
+
     public void addComponent(String name) throws Exception {
         String qualName = "smartbox.components." +  name;
         Object obj = Class.forName(qualName).getDeclaredConstructor().newInstance();
