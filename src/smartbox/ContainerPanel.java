@@ -25,12 +25,12 @@ public class ContainerPanel extends AppPanel {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String input = JOptionPane.showInputDialog("Enter component name:");
         String actionCommand = e.getActionCommand();
         Command cmd;
-        if (input != null) {
+        String input;
             switch (actionCommand) {
                 case "Add":
+                    input = JOptionPane.showInputDialog("Enter component name:");
                     cmd = factory.makeEditCommand(model, "Add", input);
                     try {
                         components.add(input); // add to list of components
@@ -40,6 +40,7 @@ public class ContainerPanel extends AppPanel {
                     }
                     break;
                 case "Rem":
+                    input = JOptionPane.showInputDialog("Enter component name:");
                     cmd = factory.makeEditCommand(model, "Rem", input);
                     try {
                         components.remove(input); // remove from list of components
@@ -50,6 +51,8 @@ public class ContainerPanel extends AppPanel {
                     }
                     break;
                 case "Run":
+                    input = JOptionPane.showInputDialog("Enter component name:");
+
                     cmd = factory.makeEditCommand(model, "Run", input);
                     try {
                         cmd.execute();
@@ -60,7 +63,7 @@ public class ContainerPanel extends AppPanel {
                     break;
                 default:
                     super.actionPerformed(e);
-            }
+
         }
     }
 

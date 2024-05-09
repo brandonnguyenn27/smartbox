@@ -14,8 +14,8 @@ public class AppPanel extends JPanel implements ActionListener, Subscriber {
     protected View view;
     protected AppFactory factory;
     private JFrame frame;
-    public static int FRAME_WIDTH = 1000;
-    public static int FRAME_HEIGHT = 600;
+    public static int FRAME_WIDTH = 600;
+    public static int FRAME_HEIGHT = 400;
     /*
       Constructor for the AppPanel class.
       Creates a JFrame and adds the AppPanel to it.
@@ -33,7 +33,6 @@ public class AppPanel extends JPanel implements ActionListener, Subscriber {
         model.subscribe(this);
 
         frame = new SafeFrame();
-        frame.setResizable(false);
         Container cp = frame.getContentPane();
         cp.add(this);
         frame.setJMenuBar(createMenuBar());
