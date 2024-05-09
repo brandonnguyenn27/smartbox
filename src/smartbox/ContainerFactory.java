@@ -14,14 +14,16 @@ public class ContainerFactory implements AppFactory {
         return new String[] {"Add", "Rem", "Run"};
     }
 
+    @Override
     public Command makeEditCommand(Model model, String type, Object source) {
+        String componentName = (String) source;
         switch (type) {
             case "Add":
-                return new AddCommand(model, source);
+                return new AddCommand(model, componentName);
             case "Rem":
-                return new RemCommand(model, source);
+                return new RemCommand(model, componentName);
             case "Run":
-                return new RunCommand(model, source);
+                return new RunCommand(model, componentName);
         }
         return null;
     }

@@ -2,18 +2,18 @@ package smartbox;
 import mvc.*;
 public class RemCommand extends Command{
     private Model model;
-    private Component cmp;
+    private String componentName;
 
-    public RemCommand(Model model, Object source) {
+    public RemCommand(Model model, String componentName) {
         super(model);
-        this.cmp = (Component)source;
         this.model = model;
+        this.componentName = componentName;
     }
 
     public void execute() {
         if (model instanceof Container) {
             try {
-                ((Container) model).remComponent(cmp.name);
+                ((Container) model).remComponent(componentName);
             } catch (Exception e) {
                 e.printStackTrace();
             }
