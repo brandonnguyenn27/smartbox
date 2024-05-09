@@ -1,5 +1,5 @@
 package smartbox;
-import java.awt.GridLayout;
+import java.awt.*;
 
 
 import javax.swing.*;
@@ -10,7 +10,7 @@ public class ContainerPanel extends AppPanel {
     java.awt.List components;
     public ContainerPanel(AppFactory factory) {
         super(factory);
-
+        components = new java.awt.List(10);
         JButton addButton = new JButton("Add");
         addButton.addActionListener(this);
         controlPanel.add(addButton);
@@ -21,28 +21,44 @@ public class ContainerPanel extends AppPanel {
         runButton.addActionListener(this);
         controlPanel.add(runButton);
 
-
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String input = JOptionPane.showInputDialog("Enter component name:");
         String actionCommand = e.getActionCommand();
+        Command cmd = null;
         if (input != null) {
-            Command cmd;
             switch (actionCommand) {
                 case "Add":
                     cmd = factory.makeEditCommand(model, "Add", input);
+                    try {
+                        components.add(input); // add to list of components
+                        ((Container) model).addComponent(input); // add to container
+                    } catch (Exception ex) {
+                        throw new RuntimeException(ex);
+                    }
                     System.out.println("Add");
                     break;
                 case "Rem":
                     cmd = factory.makeEditCommand(model, "Rem", input);
+                    try {
+                        components.remove(input); // remove from list of components
+                        ((Container) model).remComponent(input); // remove from container
+                    } catch (Exception ex) {
+                        throw new RuntimeException(ex);
+                    }
                     break;
                 case "Run":
                     cmd = factory.makeEditCommand(model, "Run", input);
+                    try {
+                        ((Container) model).launch(input);
+                    } catch (Exception ex) {
+                        throw new RuntimeException(ex);
+                    }
                     break;
                 default:
-                    throw new IllegalArgumentException("Invalid command: " + actionCommand);
+                    super.actionPerformed(e);
             }
             cmd.execute();
         }
