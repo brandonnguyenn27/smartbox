@@ -1,5 +1,8 @@
 package smartbox;
 import mvc.*;
+
+import javax.swing.*;
+
 public class RemCommand extends Command{
     private Model model;
     private String componentName;
@@ -15,6 +18,7 @@ public class RemCommand extends Command{
             try {
                 ((Container) model).remComponent(componentName);
             } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Component not found");
                 e.printStackTrace();
             }
         }

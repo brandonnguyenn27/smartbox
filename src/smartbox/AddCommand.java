@@ -1,5 +1,8 @@
 package smartbox;
 import mvc.*;
+
+import javax.swing.*;
+
 public class AddCommand extends Command {
     private Model model;
     private String componentName;
@@ -14,6 +17,7 @@ public class AddCommand extends Command {
             try {
                 ((Container) model).addComponent(componentName);
             } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Component not found");
                 e.printStackTrace();
             }
         }

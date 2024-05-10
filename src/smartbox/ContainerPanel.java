@@ -42,6 +42,10 @@ public class ContainerPanel extends AppPanel {
                 case "Rem":
                     input = JOptionPane.showInputDialog("Enter component name:");
                     cmd = factory.makeEditCommand(model, "Rem", input);
+                    if (components.getItemCount() == 0) {
+                        JOptionPane.showMessageDialog(null, "No components to remove, please add one.");
+                        break;
+                    }
                     try {
                         components.remove(input); // remove from list of components
                         cmd.execute();
@@ -52,8 +56,11 @@ public class ContainerPanel extends AppPanel {
                     break;
                 case "Run":
                     input = JOptionPane.showInputDialog("Enter component name:");
-
                     cmd = factory.makeEditCommand(model, "Run", input);
+                    if (components.getItemCount() == 0) {
+                        JOptionPane.showMessageDialog(null, "No components to run, please add one.");
+                        break;
+                    }
                     try {
                         cmd.execute();
 

@@ -1,6 +1,8 @@
 package smartbox;
 import mvc.*;
 
+import javax.swing.*;
+
 public class RunCommand extends Command {
     private Model model;
     private String componentName;
@@ -15,6 +17,7 @@ public class RunCommand extends Command {
             try {
                 ((Container) model).launch(componentName);
             } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Component not found");
                 e.printStackTrace();
             }
         }
