@@ -29,7 +29,7 @@ public class ContainerFactory implements AppFactory {
     }
 
     public String getTitle() {
-        return "Container";
+        return "SmartBox";
     }
 
     public String[] getHelp() {
@@ -37,6 +37,6 @@ public class ContainerFactory implements AppFactory {
     }
 
     public String about() {
-        return "Container";
+        return "SmartBox by Brandon Nguyen";
     }
 }

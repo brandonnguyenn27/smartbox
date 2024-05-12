@@ -37,5 +37,10 @@ public Stack() {
         return stack.isEmpty();
     }
 
+    @Override
+    public int size() {
+        return stack.size();
+    }
+
 // ???
 }

@@ -6,4 +6,5 @@ public interface IStack {
     public Double top();
     public void clear();
     public Boolean isEmpty();
+    public int size();
 }
